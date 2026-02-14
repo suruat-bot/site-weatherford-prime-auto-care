@@ -1,410 +1,72 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{businessName}} | {{category}}</title>
-  <meta name="description" content="{{businessName}} offers trusted {{category}} solutions. Call {{phone}} for fast help.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title>Weatherford Prime Auto Care | Auto Care</title>
+  <link rel="icon" type="image/x-icon" href="https://cdn.jsdelivr.net/gh/StartBootstrap/startbootstrap-grayscale@master/dist/assets/favicon.ico" />
+  <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,700" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/gh/StartBootstrap/startbootstrap-grayscale@master/dist/css/styles.css" rel="stylesheet" />
   <style>
-    :root {
-      --brand-primary: #2D3436;
-      --brand-accent: #E17055;
-      --brand-soft: #f1f3f5;
-      --brand-dark: #1f2527;
-      --accent-color: {{accentColor}};
-      --accent-light: {{accentLight}};
-      --text-main: #212529;
-      --section-pad: 96px;
-      --shadow-soft: 0 12px 32px rgba(0,0,0,.10);
-      --shadow-hover: 0 22px 48px rgba(0,0,0,.18);
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      color: var(--text-main);
-      line-height: 1.7;
-      background: #fff;
-    }
-
-    h1,h2,h3,h4,h5 {
-      font-family: 'Playfair Display', serif;
-      letter-spacing: .2px;
-    }
-
-    .section-pad { padding: var(--section-pad) 0; }
-
-    .navbar {
-      backdrop-filter: saturate(180%) blur(8px);
-      background: rgba(255,255,255,.94);
-      border-bottom: 1px solid rgba(0,0,0,.06);
-    }
-
-    .navbar-brand {
-      font-weight: 800;
-      color: var(--brand-primary);
-      font-size: 1.35rem;
-    }
-
-    .btn-phone {
-      background: var(--brand-accent);
-      color: #fff;
-      border: none;
-      font-weight: 700;
-      padding: .7rem 1rem;
-    }
-
-    .btn-phone:hover { background: #000; color: #fff; }
-
-    .hero {
-      min-height: 74vh;
-      color: #fff;
-      position: relative;
-      overflow: hidden;
-      background:
-        radial-gradient(circle at 20% 15%, rgba(255,255,255,.15), transparent 35%),
-        radial-gradient(circle at 80% 0%, rgba(255,255,255,.20), transparent 30%),
-        linear-gradient(135deg, var(--brand-primary), var(--brand-dark));
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image: linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
-      background-size: 42px 42px;
-      opacity: .22;
-      pointer-events: none;
-    }
-
-    .hero .hero-content { position: relative; z-index: 2; }
-
-    .hero h1 {
-      font-size: clamp(2rem, 4.7vw, 4rem);
-      line-height: 1.1;
-      margin-bottom: 1rem;
-    }
-
-    .hero p { max-width: 660px; font-size: 1.08rem; opacity: .96; }
-
-    .trust-bar {
-      background: var(--brand-soft);
-      border-top: 1px solid rgba(0,0,0,.07);
-      border-bottom: 1px solid rgba(0,0,0,.07);
-    }
-
-    .trust-item i {
-      color: var(--brand-primary);
-      font-size: 1.35rem;
-      margin-right: .45rem;
-    }
-
-    .section-tag {
-      display: inline-block;
-      padding: .4rem .8rem;
-      border-radius: 100px;
-      background: rgba(0,0,0,.06);
-      font-weight: 600;
-      font-size: .85rem;
-      margin-bottom: .8rem;
-    }
-
-    .feature-list li {
-      margin-bottom: .65rem;
-      list-style: none;
-    }
-
-    .feature-list i { color: var(--brand-primary); margin-right: .5rem; }
-
-    .service-card {
-      border: 0;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: var(--shadow-soft);
-      transition: transform .25s ease, box-shadow .25s ease;
-      height: 100%;
-    }
-
-    .service-card:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow-hover);
-    }
-
-    .service-icon {
-      width: 56px;
-      height: 56px;
-      border-radius: 12px;
-      background: var(--brand-soft);
-      color: var(--brand-primary);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .review-card {
-      border: 1px solid rgba(0,0,0,.08);
-      border-radius: 14px;
-      box-shadow: var(--shadow-soft);
-      height: 100%;
-    }
-
-    .stars { color: #f6b21a; letter-spacing: 2px; }
-
-    .hours-box, .map-box {
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: var(--shadow-soft);
-      border: 1px solid rgba(0,0,0,.08);
-      background: #fff;
-    }
-
-    .cta-banner {
-      background: linear-gradient(120deg, var(--brand-primary), var(--brand-dark));
-      color: #fff;
-    }
-
-    footer {
-      background: #111;
-      color: #e7e7e7;
-    }
-
-    footer a { color: #fff; text-decoration: none; }
-
-    .powered { opacity: .78; font-size: .84rem; }
-
-    .badge-rating {
-      background: var(--accent-light);
-      color: #222;
-      border: 1px solid rgba(0,0,0,.08);
-      font-weight: 700;
-    }
-
-    @media (max-width: 991px) {
-      :root { --section-pad: 76px; }
-      .hero { min-height: 66vh; }
-      .navbar .btn-phone { margin-top: .7rem; }
-    }
+    :root { --bs-primary: #5f6972; }
+    .masthead { background: linear-gradient(to bottom, rgba(0,0,0,.25) 0%, rgba(0,0,0,.8) 75%, #000 100%), url('https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=1800&q=80'); background-size: cover; }
+    .about-section { background: linear-gradient(to bottom, #000 0%, #111 75%, #1d1d1d 100%); }
   </style>
 </head>
-<body>
-  <nav class="navbar navbar-expand-lg sticky-top py-3">
-    <div class="container">
-      <a class="navbar-brand" href="#home">{{businessName}}</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="mainNav">
-        <ul class="navbar-nav ms-auto me-lg-3">
+<body id="page-top">
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container px-4 px-lg-5">
+      <a class="navbar-brand" href="#page-top">Weatherford Prime Auto Care</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive">Menu <i class="fas fa-bars"></i></button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
-          <li class="nav-item"><a class="nav-link" href="#reviews">Reviews</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="#signup">Contact</a></li>
         </ul>
-        <a class="btn btn-phone" href="tel:{{phone}}"><i class="bi bi-telephone-fill me-1"></i>{{phone}}</a>
       </div>
     </div>
   </nav>
 
-  <header id="home" class="hero d-flex align-items-center">
-    <div class="container hero-content py-5">
-      <div class="row">
-        <div class="col-lg-8">
-          <span class="section-tag">Top Rated {{category}} Team</span>
-          <h1>{{tagline}}</h1>
-          <p>Welcome to {{businessName}}. We deliver dependable service, clear communication, and quality workmanship that earns five-star trust in your neighborhood.</p>
-          <div class="d-flex flex-wrap gap-3 mt-4">
-            <a href="tel:{{phone}}" class="btn btn-light btn-lg px-4">Call Now</a>
-            <a href="#services" class="btn btn-outline-light btn-lg px-4">Our Services</a>
-            <span class="badge badge-rating align-self-center px-3 py-2"><i class="bi bi-star-fill text-warning me-1"></i>{{rating}} / 5 ({{reviewCount}} reviews)</span>
-          </div>
-        </div>
-      </div>
+  <header class="masthead">
+    <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
+      <div class="d-flex justify-content-center"><div class="text-center">
+        <h1 class="mx-auto my-0 text-uppercase">Weatherford Prime Auto Care</h1>
+        <h2 class="text-white-50 mx-auto mt-2 mb-5">Weatherford Prime Auto Care trusted auto repair support for your neighborhood</h2>
+        <a class="btn btn-primary" href="https://maps.google.com/?q=Weatherford+Prime+Auto+Care" target="_blank" rel="noopener">Get Directions</a>
+      </div></div>
     </div>
   </header>
 
-  <section class="trust-bar py-4">
-    <div class="container">
-      <div class="row g-3 text-center text-md-start">
-        <div class="col-12 col-md-6 col-lg-3 trust-item"><i class="bi bi-speedometer2"></i><strong>ASE-Level Technicians</strong></div>
-        <div class="col-12 col-md-6 col-lg-3 trust-item"><i class="bi bi-shield-check"></i><strong>Warranty-Backed Repairs</strong></div>
-        <div class="col-12 col-md-6 col-lg-3 trust-item"><i class="bi bi-car-front-fill"></i><strong>All Makes and Models</strong></div>
-        <div class="col-12 col-md-6 col-lg-3 trust-item"><i class="bi bi-stopwatch-fill"></i><strong>Fast Turnaround Times</strong></div>
-      </div>
+  <section class="about-section text-center" id="about">
+    <div class="container px-4 px-lg-5">
+      <div class="row gx-4 gx-lg-5 justify-content-center"><div class="col-lg-8">
+        <h2 class="text-white mb-4">High performance auto repair service</h2>
+        <p class="text-white-50">Our technicians handle diagnostics, mechanical repair, and preventive maintenance with precision. 4.5/5 from 58 local customers.</p>
+      </div></div>
     </div>
   </section>
 
-  <section id="about" class="section-pad">
-    <div class="container">
-      <div class="row align-items-center g-5">
-        <div class="col-lg-6">
-          <span class="section-tag">About {{businessName}}</span>
-          <h2 class="mb-3">Reliable {{category}} with a focus on lasting results</h2>
-          <p>{{businessName}} delivers honest automotive care with clear diagnostics and dependable repairs. We focus on safety, performance, and transparent communication so you can drive with confidence.</p>
-          <p class="mb-0">From your first call to final walkthrough, our team keeps the process simple and transparent. We respect your time, your home, and your budget.</p>
-        </div>
-        <div class="col-lg-6">
-          <div class="p-4 p-lg-5 rounded-4" style="background: var(--brand-soft); border:1px solid rgba(0,0,0,.08);">
-            <h5 class="mb-3">Why customers choose us</h5>
-            <ul class="feature-list ps-0 mb-0">
-              <li><i class="bi bi-check-circle-fill"></i>Digital inspections with clear repair notes</li>
-              <li><i class="bi bi-check-circle-fill"></i>Upfront estimates and no surprise charges</li>
-              <li><i class="bi bi-check-circle-fill"></i>High-quality parts from trusted suppliers</li>
-              <li><i class="bi bi-check-circle-fill"></i>Friendly advisors who explain every step</li>
-            </ul>
-          </div>
-        </div>
-      </div>
+  <section class="projects-section bg-light" id="projects">
+    <div class="container px-4 px-lg-5">
+      <div class="row gx-0 mb-5 mb-lg-0 justify-content-center"><div class="col-lg-6"><img class="img-fluid" src="https://images.unsplash.com/photo-1632823471565-1ecdf6c7f7cb?auto=format&fit=crop&w=1000&q=80" alt="" /></div><div class="col-lg-6"><div class="bg-black text-center h-100 project"><div class="d-flex h-100"><div class="project-text w-100 my-auto text-center text-lg-left"><h4 class="text-white">Diagnostics</h4><p class="mb-0 text-white-50">Advanced inspection and transparent reports before work begins.</p><hr class="d-none d-lg-block mb-0 ms-0" /></div></div></div></div></div>
+      <div class="row gx-0 justify-content-center"><div class="col-lg-6"><img class="img-fluid" src="https://images.unsplash.com/photo-1625047509168-a7026f36de04?auto=format&fit=crop&w=1000&q=80" alt="" /></div><div class="col-lg-6 order-lg-first"><div class="bg-black text-center h-100 project"><div class="d-flex h-100"><div class="project-text w-100 my-auto text-center text-lg-right"><h4 class="text-white">Maintenance and Repair</h4><p class="mb-0 text-white-50">Brake service, tune-ups, fluid service, and major repairs done right.</p><hr class="d-none d-lg-block mb-0 me-0" /></div></div></div></div></div>
     </div>
   </section>
 
-  <section id="services" class="section-pad pt-0">
-    <div class="container">
-      <div class="row align-items-end mb-4">
-        <div class="col-lg-8">
-          <span class="section-tag">What We Offer</span>
-          <h2 class="mb-0">Services designed for real-world needs</h2>
-        </div>
-      </div>
-      <div class="row g-4">
-        <div class="col-12 col-md-6 col-lg-4">
-          <div class="card service-card p-4">
-            <div class="service-icon"><i class="bi bi-tools"></i></div>
-            <h5>Diagnostics and Check Engine</h5>
-            <p class="mb-0">Advanced scans and troubleshooting to pinpoint issues quickly.</p>
-          </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg-4">
-          <div class="card service-card p-4">
-            <div class="service-icon"><i class="bi bi-disc"></i></div>
-            <h5>Brake Service</h5>
-            <p class="mb-0">Brake inspections, pad replacement, and rotor resurfacing for safe stopping.</p>
-          </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg-4">
-          <div class="card service-card p-4">
-            <div class="service-icon"><i class="bi bi-ev-front-fill"></i></div>
-            <h5>Oil and Filter Changes</h5>
-            <p class="mb-0">Routine maintenance packages that protect engine life and performance.</p>
-          </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg-4">
-          <div class="card service-card p-4">
-            <div class="service-icon"><i class="bi bi-battery-charging"></i></div>
-            <h5>Battery and Charging Systems</h5>
-            <p class="mb-0">Testing and replacement for batteries, alternators, and starters.</p>
-          </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg-4">
-          <div class="card service-card p-4">
-            <div class="service-icon"><i class="bi bi-thermometer-sun"></i></div>
-            <h5>AC and Cooling Repair</h5>
-            <p class="mb-0">Cabin comfort and cooling system service for hot weather reliability.</p>
-          </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg-4">
-          <div class="card service-card p-4">
-            <div class="service-icon"><i class="bi bi-droplet-half"></i></div>
-            <h5>Detailing and Protection</h5>
-            <p class="mb-0">Interior and exterior detailing with paint-safe finishing and protection.</p>
-          </div>
-        </div>
-      </div>
+  <section class="signup-section" id="signup">
+    <div class="container px-4 px-lg-5">
+      <div class="row gx-4 gx-lg-5"><div class="col-md-10 col-lg-8 mx-auto text-center text-white">
+        <i class="far fa-paper-plane fa-2x mb-2"></i><h2 class="mb-4">Contact and hours</h2>
+        <p class="mb-1">816 Palo Pinto St, Weatherford, TX 76086</p><p class="mb-1">(817) 555-0175</p><p class="mb-0">Mon-Fri 8:00 AM-6:00 PM</p>
+      </div></div>
     </div>
   </section>
 
-  <section id="reviews" class="section-pad" style="background:#fafafa;">
-    <div class="container">
-      <div class="row mb-4">
-        <div class="col-lg-8">
-          <span class="section-tag">Customer Reviews</span>
-          <h2>Trusted by local families and businesses</h2>
-        </div>
-      </div>
-      <div class="row g-4">
-        <div class="col-12 col-md-6 col-lg-4">
-          <div class="card review-card p-4">
-            <div class="stars mb-2">★★★★★</div>
-            <p class="mb-3">“They diagnosed my issue fast and had me back on the road the same day.”</p>
-            <h6 class="mb-0">Mark D.</h6>
-          </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg-4">
-          <div class="card review-card p-4">
-            <div class="stars mb-2">★★★★★</div>
-            <p class="mb-3">“Fair pricing and no pressure upsells. The team explained everything in plain language.”</p>
-            <h6 class="mb-0">Brianna H.</h6>
-          </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg-4">
-          <div class="card review-card p-4">
-            <div class="stars mb-2">★★★★★</div>
-            <p class="mb-3">“Clean shop, friendly staff, and my car drives better than it has in years.”</p>
-            <h6 class="mb-0">Carlos V.</h6>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact" class="section-pad">
-    <div class="container">
-      <div class="row g-4 align-items-stretch">
-        <div class="col-lg-5">
-          <div class="hours-box p-4 h-100">
-            <h4 class="mb-3">Hours</h4>
-            <table class="table mb-3">
-              <tbody>
-                <tr><th scope="row">Availability</th><td>{{hours}}</td></tr>
-                <tr><th scope="row">Phone</th><td>{{phone}}</td></tr>
-                <tr><th scope="row">Address</th><td>{{address}}</td></tr>
-              </tbody>
-            </table>
-            <p class="mb-0"><i class="bi bi-geo-alt-fill me-2"></i>Serving your local area with fast response times.</p>
-          </div>
-        </div>
-        <div class="col-lg-7">
-          <div class="map-box h-100">
-            <iframe src="{{mapsUrl}}" width="100%" height="100%" style="min-height:320px; border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map of {{businessName}}"></iframe>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="cta-banner py-5">
-    <div class="container">
-      <div class="row align-items-center g-3">
-        <div class="col-lg-8">
-          <h3 class="mb-0">Ready to get started with {{businessName}}?</h3>
-        </div>
-        <div class="col-lg-4 text-lg-end">
-          <a href="tel:{{phone}}" class="btn btn-light btn-lg px-4">Call {{phone}}</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer class="py-5">
-    <div class="container">
-      <div class="row g-3 align-items-center">
-        <div class="col-lg-8">
-          <h5 class="mb-2">{{businessName}}</h5>
-          <p class="mb-1">{{address}}</p>
-          <p class="mb-0"><a href="tel:{{phone}}">{{phone}}</a></p>
-        </div>
-        <div class="col-lg-4 text-lg-end">
-          <p class="powered mb-0">Powered by Rosarus</p>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <footer class="footer bg-black small text-center text-white-50"><div class="container px-4 px-lg-5">Powered by Rosarus</div></footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/StartBootstrap/startbootstrap-grayscale@master/dist/js/scripts.js"></script>
 </body>
 </html>
