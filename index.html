@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weatherford Prime Auto Care</title>
+  <style>
+    :root { --accent: #5f6972; --ink: #222831; --paper: #f6f7f8; }
+    * { box-sizing: border-box; }
+    body { margin:0; color:var(--ink); background:var(--paper); font-family: Inter, sans-serif;
+      background-image: radial-gradient(rgba(0,0,0,.03) 1px, transparent 1px); background-size: 9px 9px; }
+    .wrap { max-width: 980px; margin: 0 auto; padding: 32px 16px 56px; }
+    h1,h2 { font-family: Georgia, serif; font-weight: 500; }
+    .hero { padding: 36px 0 20px; border-bottom: 1px solid rgba(0,0,0,.1); }
+    .tag { color: var(--accent); }
+    .row { display:grid; grid-template-columns: 1.1fr .9fr; gap: 18px; margin-top: 20px; }
+    .card { background: rgba(255,255,255,.72); border:1px solid rgba(0,0,0,.08); border-radius:14px; padding:18px; }
+    iframe { width:100%; height:250px; border:0; border-radius:10px; }
+    @media (max-width:780px){ .row { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <h1>Weatherford Prime Auto Care</h1>
+      <p class="tag">Weatherford Prime Auto Care serving local families and businesses with care</p>
+    </section>
+
+    <section class="row">
+      <article class="card">
+        <h2>About Shop</h2>
+        <p>Weatherford Prime Auto Care is a local auto repair business focused on practical solutions, respectful service, and clear communication from first call to follow-up.</p>
+        <h2>Core Services</h2>
+        <ul><li>Reliable auto repair support</li>
+<li>Transparent scheduling and communication</li>
+<li>Friendly local service with fast response</li></ul>
+      </article>
+      <article class="card">
+        <h2>Contact and Hours</h2>
+        <p><strong>Phone:</strong> (817) 555-0175</p>
+        <p><strong>Address:</strong> 816 Palo Pinto St, Weatherford, TX 76086</p>
+        <p><strong>Hours:</strong> Mon-Fri 8:00 AM-6:00 PM</p>
+        <p><strong>Reviews:</strong> 4.5 / 5 (58 ratings)</p>
+        <p><a href="https://maps.google.com/?q=Weatherford+Prime+Auto+Care">Open in Google Maps</a></p>
+      </article>
+    </section>
+
+    <section class="card" style="margin-top:18px;">
+      <h2>Location</h2>
+      <iframe src="https://maps.google.com/maps?q=816%20Palo%20Pinto%20St%2C%20Weatherford%2C%20TX%2076086&t=&z=13&ie=UTF8&iwloc=&output=embed" loading="lazy"></iframe>
+    </section>
+
+    <section class="card" style="margin-top:18px;">
+      <h2>Driver Reviews</h2>
+      <p>Drivers mention clear diagnostics, practical recommendations, and trustworthy turnaround times.</p>
+    </section>
+
+    <section class="card" style="margin-top:18px;">
+      Need service this week? Call (817) 555-0175.
+    </section>
+  </main>
+</body>
+</html>
