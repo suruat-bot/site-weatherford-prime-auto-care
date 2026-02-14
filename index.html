@@ -3,61 +3,150 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Weatherford Prime Auto Care</title>
+  <title>{{businessName}} | {{category}}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap" rel="stylesheet">
   <style>
-    :root { --accent: #5f6972; --ink: #222831; --paper: #f6f7f8; }
+    :root {
+      --bg: #f7f7f6;
+      --surface: #ffffff;
+      --ink: #252a2f;
+      --muted: #64707a;
+      --line: #d9dfe5;
+      --accent: {{accentColor}};
+      --accent-soft: {{accentLight}};
+      --radius: 18px;
+      --shadow: 0 14px 34px rgba(22, 29, 35, 0.1);
+    }
     * { box-sizing: border-box; }
-    body { margin:0; color:var(--ink); background:var(--paper); font-family: Inter, sans-serif;
-      background-image: radial-gradient(rgba(0,0,0,.03) 1px, transparent 1px); background-size: 9px 9px; }
-    .wrap { max-width: 980px; margin: 0 auto; padding: 32px 16px 56px; }
-    h1,h2 { font-family: Georgia, serif; font-weight: 500; }
-    .hero { padding: 36px 0 20px; border-bottom: 1px solid rgba(0,0,0,.1); }
-    .tag { color: var(--accent); }
-    .row { display:grid; grid-template-columns: 1.1fr .9fr; gap: 18px; margin-top: 20px; }
-    .card { background: rgba(255,255,255,.72); border:1px solid rgba(0,0,0,.08); border-radius:14px; padding:18px; }
-    iframe { width:100%; height:250px; border:0; border-radius:10px; }
-    @media (max-width:780px){ .row { grid-template-columns:1fr; } }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, sans-serif;
+      color: var(--ink);
+      background: radial-gradient(rgba(31,42,54,0.02) .8px, transparent .8px), var(--bg);
+      background-size: 5px 5px, auto;
+      line-height: 1.7;
+    }
+    .container { width: min(1080px, 92vw); margin: 0 auto; }
+    section { padding: 4.4rem 0; }
+    h1, h2, h3 { margin: 0 0 .95rem; font-family: Fraunces, Georgia, serif; line-height: 1.15; }
+    h1 { font-size: clamp(2.25rem, 5.2vw, 4.15rem); }
+    h2 { font-size: clamp(1.5rem, 3vw, 2.35rem); }
+    h3 { font-size: 1.1rem; }
+
+    .reveal { opacity: 0; transform: translateY(14px); animation: lift .78s ease forwards; }
+    .d2 { animation-delay: .14s; } .d3 { animation-delay: .28s; }
+    @keyframes lift { to { opacity: 1; transform: translateY(0); } }
+
+    .hero { padding: 6.2rem 0 4.9rem; position: relative; }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 1.4rem; right: 0;
+      width: 180px; height: 56px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      opacity: .65;
+    }
+    .kicker { text-transform: uppercase; letter-spacing: .11em; font-size: .76rem; color: var(--muted); }
+    .tagline { font-size: clamp(1.08rem, 2.2vw, 1.32rem); max-width: 650px; }
+    .actions { margin-top: 1.55rem; display: flex; gap: .85rem; flex-wrap: wrap; }
+    .btn { text-decoration: none; border-radius: 999px; padding: .82rem 1.26rem; font-weight: 700; transition: transform .24s ease, box-shadow .24s ease; }
+    .btn-main { background: var(--accent); color: #fff; box-shadow: var(--shadow); }
+    .btn-main:hover { transform: translateY(-2px); }
+    .btn-soft { background: var(--accent-soft); color: var(--ink); border: 1px solid var(--line); }
+
+    .about { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); padding: clamp(1.4rem, 3vw, 2.2rem); }
+
+    .services { margin-top: 1.2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+    .service { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 1.07rem; transition: transform .23s ease, box-shadow .23s ease; }
+    .service:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .icon { color: var(--accent); margin-right: .35rem; }
+
+    .reviews { background: color-mix(in oklab, var(--accent-soft) 33%, #fff); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .rating { display: inline-flex; gap: .5rem; align-items: center; background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: .42rem .84rem; font-weight: 700; }
+    .stars { color: #c08f2e; letter-spacing: 1px; }
+    .review-grid { margin-top: 1.05rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(245px, 1fr)); gap: 1rem; }
+    .review-card { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 1rem; }
+
+    .hours-loc { display: grid; gap: 1rem; }
+    .panel { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 1.2rem; }
+    pre { margin: .3rem 0 0; font: inherit; white-space: pre-wrap; color: #4b5660; }
+    iframe { width: 100%; min-height: 320px; border: 0; border-radius: 12px; }
+
+    footer { padding: 3.2rem 0 4rem; border-top: 1px solid var(--line); }
+    .footer-card { text-align: center; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 1.8rem 1rem; }
+    .small { color: var(--muted); }
+
+    @media (min-width: 860px) { .hours-loc { grid-template-columns: .95fr 1.05fr; } }
   </style>
 </head>
 <body>
-  <main class="wrap">
-    <section class="hero">
-      <h1>Weatherford Prime Auto Care</h1>
-      <p class="tag">Weatherford Prime Auto Care serving local families and businesses with care</p>
+  <main>
+    <section class="hero container">
+      <p class="kicker reveal">Dependable {{category}}</p>
+      <h1 class="reveal d2">{{businessName}}</h1>
+      <p class="tagline reveal d3">{{tagline}}</p>
+      <div class="actions reveal d3">
+        <a class="btn btn-main" href="tel:{{phone}}">Call {{phone}}</a>
+        <a class="btn btn-soft" href="#hours-location">See hours and directions</a>
+      </div>
     </section>
 
-    <section class="row">
-      <article class="card">
-        <h2>About Shop</h2>
-        <p>Weatherford Prime Auto Care is a local auto repair business focused on practical solutions, respectful service, and clear communication from first call to follow-up.</p>
-        <h2>Core Services</h2>
-        <ul><li>Reliable auto repair support</li>
-<li>Transparent scheduling and communication</li>
-<li>Friendly local service with fast response</li></ul>
-      </article>
-      <article class="card">
-        <h2>Contact and Hours</h2>
-        <p><strong>Phone:</strong> (817) 555-0175</p>
-        <p><strong>Address:</strong> 816 Palo Pinto St, Weatherford, TX 76086</p>
-        <p><strong>Hours:</strong> Mon-Fri 8:00 AM-6:00 PM</p>
-        <p><strong>Reviews:</strong> 4.5 / 5 (58 ratings)</p>
-        <p><a href="https://maps.google.com/?q=Weatherford+Prime+Auto+Care">Open in Google Maps</a></p>
-      </article>
+    <section class="container">
+      <div class="about reveal">
+        <h2>About</h2>
+        <p>{{businessName}} provides straightforward diagnostics, practical recommendations, and service you can trust. Our technicians focus on quality workmanship and clear communication at every step. We help drivers stay safe and confident on the road with consistent, professional care.</p>
+      </div>
     </section>
 
-    <section class="card" style="margin-top:18px;">
-      <h2>Location</h2>
-      <iframe src="https://maps.google.com/maps?q=816%20Palo%20Pinto%20St%2C%20Weatherford%2C%20TX%2076086&t=&z=13&ie=UTF8&iwloc=&output=embed" loading="lazy"></iframe>
+    <section class="container">
+      <h2 class="reveal">Services</h2>
+      <div class="services">
+        <article class="service reveal"><h3><span class="icon">◆</span>Routine maintenance</h3><p>Oil, fluid, filter, and inspection services for reliable performance.</p></article>
+        <article class="service reveal d2"><h3><span class="icon">◆</span>Diagnostics and repair</h3><p>Accurate troubleshooting with clear explanations and next steps.</p></article>
+        <article class="service reveal d3"><h3><span class="icon">◆</span>Brake and tire care</h3><p>Safety first service to keep handling, stopping, and ride quality strong.</p></article>
+      </div>
     </section>
 
-    <section class="card" style="margin-top:18px;">
-      <h2>Driver Reviews</h2>
-      <p>Drivers mention clear diagnostics, practical recommendations, and trustworthy turnaround times.</p>
+    <section class="reviews">
+      <div class="container">
+        <h2 class="reveal">Driver reviews</h2>
+        <div class="rating reveal d2"><span class="stars">★★★★★</span> {{rating}} from {{reviewCount}} Google reviews</div>
+        <div class="review-grid">
+          <article class="review-card reveal"><p>"Honest shop with excellent communication. They explained everything clearly and finished on time."</p><small>Local driver</small></article>
+          <article class="review-card reveal d2"><p>"Friendly team, fair pricing, and solid work. This is my go to place for service."</p><small>Verified customer</small></article>
+          <article class="review-card reveal d3"><p>"Professional from front desk to technician. My car runs better than ever."</p><small>Returning client</small></article>
+        </div>
+      </div>
     </section>
 
-    <section class="card" style="margin-top:18px;">
-      Need service this week? Call (817) 555-0175.
+    <section class="container" id="hours-location">
+      <h2 class="reveal">Hours and location</h2>
+      <div class="hours-loc">
+        <article class="panel reveal d2">
+          <h3>Visit the shop</h3>
+          <p><strong>Address:</strong><br>{{address}}</p>
+          <p><strong>Phone:</strong> {{phone}}</p>
+          <p><strong>Hours</strong></p>
+          <pre>{{hours}}</pre>
+          <p><a href="{{mapsUrl}}" target="_blank" rel="noreferrer">Open in Google Maps</a></p>
+        </article>
+        <article class="panel reveal d3">
+          <iframe loading="lazy" src="https://maps.google.com/maps?q={{address}}&t=&z=14&ie=UTF8&iwloc=&output=embed" title="Map for {{businessName}}"></iframe>
+        </article>
+      </div>
     </section>
   </main>
+
+  <footer>
+    <div class="container footer-card reveal">
+      <h2>Call now</h2>
+      <p>Reach us at <strong>{{phone}}</strong> to schedule service. We are located at <strong>{{address}}</strong>.</p>
+      <p class="small">Thank you for trusting {{businessName}} with your vehicle.</p>
+    </div>
+  </footer>
 </body>
 </html>
